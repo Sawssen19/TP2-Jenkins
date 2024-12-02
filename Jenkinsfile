@@ -21,7 +21,7 @@ pipeline {
       steps {
         dir("TP2-Jenkins"){
           sh "mvn clean install"
-          sh "docker build -t docTP2jenk ."
+          sh "docker build -t doctp2jenk ."
           }
         }
       }
