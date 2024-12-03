@@ -1,14 +1,7 @@
 # Use an OpenJDK base image
-FROM openjdk:17-jdk-slim
+FROM adoptopenjdk:11-jre-hotspot
+VOLUME /tmp
+ADD target/*.jar app.jar
+CMD ["java", "-jar", "app.jar", "--spring.profiles.active=prod"]
+EXPOSE 8091
 
-# Set the working directory
-WORKDIR /app
-
-# Copy the JAR file from the target directory
-COPY target/dockerex1-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose the application port
-EXPOSE 8080
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
